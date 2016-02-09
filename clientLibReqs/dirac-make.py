@@ -21,7 +21,7 @@ versions = { 'sqlite' : "3.8.8.3",
              'bzip2' : "1.0.6",
              'zlib' : "1.2.8",
              'ncurses' : "5.9",
-             'openssl' : "1.0.1g" }
+             'openssl' : "1.0.1r" }
 
 darwinVer = ch.getDarwinVersion()
 
@@ -71,7 +71,7 @@ if not os.path.isfile( ossltar ):
     sys.exit( 1 )
 
 if not darwinVer:
-  osslConfArgs = "threads shared"
+  osslConfArgs = "threads shared no-ssl2 no-ssl3"
   if not ch.deployPackage( 'openssl', configureArgs = osslConfArgs, configureExecutable = "config",
                            makeSteps = [ '', 'test' ], onlyOneMakeStepRequired = True, makeJobs = 1,
                            skipInstall = True):
