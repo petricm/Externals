@@ -71,9 +71,9 @@ if not os.path.isfile( ossltar ):
     sys.exit( 1 )
 
 if not darwinVer:
-  osslConfArgs = "threads shared no-ssl2 no-ssl3 no-rc4"
+  osslConfArgs = "threads shared no-ssl2 no-ssl3"
   if not ch.deployPackage( 'openssl', configureArgs = osslConfArgs, configureExecutable = "config",
-                           makeSteps = [ '' ], onlyOneMakeStepRequired = True, makeJobs = 8,
+                           makeSteps = [ '', 'test' ], onlyOneMakeStepRequired = True, makeJobs = 8,
                            skipInstall = True):
     ch.ERROR( "Could not deploy openssl" )
     sys.exit( 1 )
